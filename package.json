@@ -13,6 +13,11 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
-    "@llamaindex/readers": "^3.1.21"
+    "@ai-sdk/openai": "^3.0.21",
+    "@llamaindex/readers": "^3.1.21",
+    "@types/express": "^5.0.6",
+    "ai": "^6.0.59",
+    "express": "^5.2.1",
+    "lucide-react": "^0.563.0"
   }
 }

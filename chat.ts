@@ -2,7 +2,7 @@ import { createOpenAI } from '@ai-sdk/openai';
 import { generateObject } from 'ai';
 import { z } from 'zod';
 import { VectorStoreIndex, storageContextFromDefaults, Settings } from "llamaindex";
-import { HuggingFaceEmbedding } from "@llamaindex/huggingface";
+import { HuggingFaceEmbedding } from "@llamaindex/huggingface"
 
 // 1. Same Embedding model as the indexer
 Settings.embedModel = new HuggingFaceEmbedding({
@@ -15,7 +15,7 @@ const ollama = createOpenAI({
     apiKey: 'ollama', 
 });
 
-async function queryData(question: string) {
+export async function queryData(question: string) {
     console.log("🔍 Searching local index...");
     
     const storageContext = await storageContextFromDefaults({ persistDir: "./storage" });
