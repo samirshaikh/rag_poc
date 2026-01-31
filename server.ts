@@ -13,7 +13,7 @@ Settings.embedModel = new HuggingFaceEmbedding({
 });
 
 import os from 'os';
-
+var healthCount = 0;
 const app = express();
 app.use(express.json());
 
@@ -37,8 +37,9 @@ async function getPdfContext(question: string) {
 }
 
 app.get('/health', async(req, res) => {
+    healthCount += 1;
     const hostname = os.hostname();
-    console.log("Health check");
+    console.log(`Health check ${healthCount}`);
     res.status(200).json({ status: "OK", server: hostname, timestamp: new Date().toISOString() });
 });
 
