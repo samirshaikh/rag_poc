@@ -6,7 +6,10 @@ A fully local Retrieval-Augmented Generation (RAG) system using **LlamaIndex.TS*
 
 ## 🛠 1. Prerequisites
 - **Node.js**: v22+ (v25 recommended)
+    pacman -Sy nodejs npm 
+
 - **Ollama**: Running locally with `ollama pull qwen2.5:3b`
+    
 - **PDFs**: Placed in the `./pdf` directory
 
 ---

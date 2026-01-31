@@ -12,10 +12,12 @@ Settings.embedModel = new HuggingFaceEmbedding({
     modelType: "sentence-transformers/all-MiniLM-L6-v2"
 });
 
+import os from 'os';
+
 const app = express();
 app.use(express.json());
 
-// 2. Configure Ollama Provider (OpenAI Compatible)
+// Configure Ollama Provider (OpenAI Compatible)
 const ollama = createOpenAI({
     baseURL: 'http://localhost:11434/v1',
     apiKey: 'ollama', 
@@ -34,12 +36,18 @@ async function getPdfContext(question: string) {
     }))
 }
 
-// 3. The Main Chat Endpoint
+app.get('/health', async(req, res) => {
+    const hostname = os.hostname();
+    res.status(200).json({ status: "OK", server: hostname, timestamp: new Date().toISOString() });
+});
+
+// The Main Chat Endpoint
 //
 app.post('/api/chat', async (req, res) => {
     const { messages } = req.body;
     const lastUserMessage = messages[messages.length - 1].content;
-
+    
+    console.log(`Querying LLM: ${os.hostname()}`);
     try {
         const contextNodes = await getPdfContext(lastUserMessage);
         const contextString = contextNodes
