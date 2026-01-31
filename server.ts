@@ -38,6 +38,7 @@ async function getPdfContext(question: string) {
 
 app.get('/health', async(req, res) => {
     const hostname = os.hostname();
+    console.log("Health check");
     res.status(200).json({ status: "OK", server: hostname, timestamp: new Date().toISOString() });
 });
 
